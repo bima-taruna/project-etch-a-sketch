@@ -87,3 +87,10 @@ body {
     font-weight: bold;
     background-color: white;
 }
+
+.change-size {
+    padding: 45px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
