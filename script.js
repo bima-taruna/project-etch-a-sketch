@@ -4,10 +4,26 @@ let size = 16
 let randomMode = false
 const colors = document.querySelectorAll(".red,.green,.blue,.black")
 const randomColor = document.querySelector(".random")
+const sizeButton = document.querySelector(".change-size")
+
+sizeButton.addEventListener('click', () => {
+    let newSize = prompt("input the grid size")
+    if (newSize === null || !Number.isInteger(parseInt(newSize))) {
+        alert("input is not valid")
+    } else if (newSize > 100) {
+        alert("the maximum size is 100")
+    } else if (newSize < 16) {
+        alert("the minimum size is 16")
+    } else {
+        size = newSize
+        addGrid(size, color, randomMode)
+    }
+})
 
 colors.forEach((item) => {
     item.addEventListener("click", () => {
         color = item.className
+        randomMode = false
         addGrid(size, color, randomMode)
     })
 })
@@ -18,7 +34,8 @@ randomColor.addEventListener("click", () => {
 })
 
 function addGrid(size, color, randomMode) {
-    gridContainer.replaceChildren()
+    console.log(randomMode)
+    gridContainer.replaceChild
     for (let i = 0; i < size; i++) {
         const column = document.createElement("div")
         column.setAttribute("class", "column");
