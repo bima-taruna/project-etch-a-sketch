@@ -16,7 +16,7 @@ sizeButton.addEventListener('click', () => {
         alert("the minimum size is 16")
     } else {
         size = newSize
-        addGrid(size, color, randomMode)
+        addGrid(size)
     }
 })
 
@@ -24,18 +24,17 @@ colors.forEach((item) => {
     item.addEventListener("click", () => {
         color = item.className
         randomMode = false
-        addGrid(size, color, randomMode)
     })
 })
 
 randomColor.addEventListener("click", () => {
     randomMode = true
-    addGrid(size, color, randomMode)
 })
 
-function addGrid(size, color, randomMode) {
-    console.log(randomMode)
-    gridContainer.replaceChild
+function addGrid(size) {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
     for (let i = 0; i < size; i++) {
         const column = document.createElement("div")
         column.setAttribute("class", "column");
@@ -67,4 +66,27 @@ function adjustGridSize(size) {
     return result + "px"
 }
 
-addGrid(size, color, randomMode);
+
+for (let i = 0; i < size; i++) {
+    const column = document.createElement("div")
+    column.setAttribute("class", "column");
+    column.style.display = "flex"
+    column.style.flexDirection = "column"
+    column.style.flexWrap = "wrap"
+    gridContainer.appendChild(column)
+    for (let j = 0; j < size; j++) {
+        const grid = document.createElement("div")
+        grid.setAttribute("class", "cell")
+        grid.style.width = adjustGridSize(size)
+        grid.style.height = adjustGridSize(size)
+        grid.style.border = "1px solid black"
+        grid.addEventListener("mouseover", () => {
+            if (randomMode) {
+                color = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`
+                grid.style.backgroundColor = color
+            }
+            grid.style.backgroundColor = color
+        })
+        column.appendChild(grid)
+    }
+}
