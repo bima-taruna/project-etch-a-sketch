@@ -7,8 +7,16 @@ body {
     height: 100vh;
     font-family: Roboto, sans-serif;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex: 2;
 }
 
 
@@ -19,11 +27,21 @@ body {
     box-sizing: border-box;
 }
 
+.control-panel {
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    text-align: center;
+    flex-direction: column;
+    border-left: 1px solid black;
+}
+
 .controller {
-    margin-top: 32px;
+    margin: 32px;
     padding: 32px;
     background-color: gray;
     color: white;
+
 }
 
 .colors {
@@ -37,6 +55,7 @@ body {
 .red,
 .green,
 .blue,
+.black,
 .random {
     width: 30px;
     height: 30px;
@@ -54,6 +73,10 @@ body {
 
 .green {
     background-color: green;
+}
+
+.black {
+    background-color: black;
 }
 
 .random {

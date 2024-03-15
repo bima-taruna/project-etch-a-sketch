@@ -1,6 +1,23 @@
 const gridContainer = document.querySelector(".grid-container");
+let color = "black"
+let size = 16
+let randomMode = false
+const colors = document.querySelectorAll(".red,.green,.blue,.black")
+const randomColor = document.querySelector(".random")
 
-function addGrid(size, color) {
+colors.forEach((item) => {
+    item.addEventListener("click", () => {
+        color = item.className
+        addGrid(size, color, randomMode)
+    })
+})
+
+randomColor.addEventListener("click", () => {
+    randomMode = true
+    addGrid(size, color, randomMode)
+})
+
+function addGrid(size, color, randomMode) {
     gridContainer.replaceChildren()
     for (let i = 0; i < size; i++) {
         const column = document.createElement("div")
@@ -16,6 +33,10 @@ function addGrid(size, color) {
             grid.style.height = adjustGridSize(size)
             grid.style.border = "1px solid black"
             grid.addEventListener("mouseover", () => {
+                if (randomMode) {
+                    color = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`
+                    grid.style.backgroundColor = color
+                }
                 grid.style.backgroundColor = color
             })
             column.appendChild(grid)
@@ -29,4 +50,4 @@ function adjustGridSize(size) {
     return result + "px"
 }
 
-addGrid(16, "black");
+addGrid(size, color, randomMode);
