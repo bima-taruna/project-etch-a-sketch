@@ -18,3 +18,49 @@ body {
     justify-content: center;
     box-sizing: border-box;
 }
+
+.controller {
+    margin-top: 32px;
+    padding: 32px;
+    background-color: gray;
+    color: white;
+}
+
+.colors {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.red,
+.green,
+.blue,
+.random {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.random {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
